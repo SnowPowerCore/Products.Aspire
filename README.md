@@ -44,6 +44,8 @@ This project was tested on Windows 11 24H2, using Microsoft Edge (Chromium).
 
 Visual Studio Code was used for the development and testing of this project.
 
+A 'publish' command was not executed on this project and hasn't been tested.
+
 ## Integration tests
 You can execute tests by running the following command (it's assumed you 'cd' into the project root dir)
 
