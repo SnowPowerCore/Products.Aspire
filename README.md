@@ -9,6 +9,17 @@ It contains following components:
 - Products.Backend.AspireYarpGateway: YARP integration with .NET Aspire for reverse proxy.
 - Products.Backend.IntegrationTests: Integration tests project to test endpoints of Products.Backend.Api.
 
+## Features
+- .NET Aspire
+- FastEndpoints
+- Dapper + Dapper.FastCrud
+- Apizr + Refit
+- .json Resource Files source generator
+- validation
+- YARP integration
+- API integration tests
+- Scalar (Swagger replacement)
+
 ## Prerequisites
 You need the latest .NET 9 SDK, which can be either managed by Visual Studio IDE (or Rider), or installed manually from https://dot.net.
 
