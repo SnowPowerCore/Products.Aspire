@@ -22,6 +22,8 @@ It contains following components:
 - YARP - .NET Aspire integration
 - API integration tests with TestContainers Postgresql container
 - Scalar (Swagger replacement)
+- Blazor Web App (Interactive Auto rendering mode)
+- Modular frontend
 
 ## Prerequisites
 You need the latest .NET 9 SDK, which can be either managed by Visual Studio IDE (or Rider), or installed manually from https://dot.net.
