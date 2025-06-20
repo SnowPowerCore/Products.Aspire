@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="Products.Backend\BusinessServices\Products\Products.Backend.Api.csproj" />
     <ProjectReference Include="Products.Backend\Shared\Services\AspireYarpGateway\Products.Backend.AspireYarpGateway.csproj" IsAspireProjectResource="false" />
+    <ProjectReference Include="Products.Frontend\Host\Products.Frontend.Host.csproj" />
   </ItemGroup>
 
   <ItemGroup>

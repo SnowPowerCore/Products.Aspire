@@ -1,0 +1,8 @@
+{
+    "ProductNameFieldLabel": "Название",
+    "ProductPriceFieldLabel": "Цена",
+    "ProductDescriptionFieldLabel": "Описание",
+    "ProductSubmitButtonLabel": "Создать/Обновить",
+    "ProductDeleteConfirmationDescLabel": "Вы уверены что хотите удалить продукт?",
+    "ProductDeleteConfirmationTitleLabel": "Удалить Продукт"
+}

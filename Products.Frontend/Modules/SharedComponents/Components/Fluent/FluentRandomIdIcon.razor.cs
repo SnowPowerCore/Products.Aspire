@@ -4,7 +4,7 @@ using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.FluentUI.AspNetCore.Components.Extensions;
 using Microsoft.FluentUI.AspNetCore.Components.Utilities;
 
-namespace snowcoreBlog.Frontend.SharedComponents.Components.Fluent;
+namespace Products.Frontend.SharedComponents.Components.Fluent;
 
 /// <summary>
 /// FluentIcon is a component that renders an icon from the Fluent System icon set.

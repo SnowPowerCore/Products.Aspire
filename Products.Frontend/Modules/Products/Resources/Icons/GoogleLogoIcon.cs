@@ -1,6 +1,6 @@
 using Microsoft.FluentUI.AspNetCore.Components;
 
-namespace snowcoreBlog.Frontend.ReadersManagement.Resources.Icons;
+namespace Products.Frontend.ProductsApi.Resources.Icons;
 
 public class GoogleLogoIcon : Icon
 {

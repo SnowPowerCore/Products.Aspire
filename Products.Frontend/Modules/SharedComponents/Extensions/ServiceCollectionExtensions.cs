@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace snowcoreBlog.Frontend.SharedComponents.Extensions;
+namespace Products.Frontend.SharedComponents.Extensions;
 
 public static class ServiceCollectionExtensions
 {

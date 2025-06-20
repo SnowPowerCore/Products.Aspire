@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
-namespace snowcoreBlog.Frontend.SharedComponents.Providers;
+namespace Products.Frontend.SharedComponents.Providers;
 
 public class FormTrackFieldsChangeProvider : ComponentBase, IDisposable
 {

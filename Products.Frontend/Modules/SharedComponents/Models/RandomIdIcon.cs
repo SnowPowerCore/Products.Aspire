@@ -3,7 +3,7 @@ using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.FluentUI.AspNetCore.Components.Extensions;
 using Microsoft.FluentUI.AspNetCore.Components.Utilities;
 
-namespace snowcoreBlog.Frontend.SharedComponents.Models;
+namespace Products.Frontend.SharedComponents.Models;
 
 /// <summary>
 /// FluentUI Icon content.

@@ -1,10 +1,10 @@
 using Apizr;
+using Products.PublicApi.Api;
 using Products.PublicApi.BusinessObjects.Dto;
-using snowcoreBlog.PublicApi.Api;
-using snowcoreBlog.PublicApi.Extensions;
+using Products.PublicApi.Extensions;
 using TimeWarp.State;
 
-namespace snowcoreBlog.Frontend.SharedComponents.Features.Antiforgery;
+namespace Products.Frontend.SharedComponents.Features.Antiforgery;
 
 partial class AntiforgeryState
 {

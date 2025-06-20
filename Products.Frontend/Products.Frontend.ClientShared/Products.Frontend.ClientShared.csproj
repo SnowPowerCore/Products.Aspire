@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Products.Universal\PublicApi\Products.PublicApi.csproj" />
-    <ProjectReference Include="..\Modules\Products\Products.Frontend.Products.csproj" />
+    <ProjectReference Include="..\Modules\Products\Products.Frontend.ProductsApi.csproj" />
     <ProjectReference Include="..\Modules\SharedComponents\Products.Frontend.SharedComponents.csproj" />
     <ProjectReference Include="..\Products.Frontend.Infrastructure\Products.Frontend.Infrastructure.csproj" />
   </ItemGroup>

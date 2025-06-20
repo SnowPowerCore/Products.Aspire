@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Products.Frontend.SharedComponents.Extensions;
 
-namespace snowcoreBlog.Frontend.SharedComponents.Validation;
+namespace Products.Frontend.SharedComponents.Validation;
 
 public class FormFluentValidationValidator : ComponentBase
 {

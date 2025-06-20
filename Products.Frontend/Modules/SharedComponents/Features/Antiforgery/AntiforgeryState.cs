@@ -1,6 +1,6 @@
 using TimeWarp.State;
 
-namespace snowcoreBlog.Frontend.SharedComponents.Features.Antiforgery;
+namespace Products.Frontend.SharedComponents.Features.Antiforgery;
 
 [PersistentState(PersistentStateMethod.SessionStorage)]
 public sealed partial class AntiforgeryState : State<AntiforgeryState>

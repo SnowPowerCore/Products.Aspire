@@ -1,0 +1,156 @@
+﻿@using Apizr
+@using Icons = Microsoft.FluentUI.AspNetCore.Components.Icons
+@using Emojis = Microsoft.FluentUI.AspNetCore.Components.Emojis
+@using Microsoft.AspNetCore.Components.Forms
+@using Products.Frontend.ProductsApi.Resources.Icons
+@using Products.PublicApi.Utilities.Api
+@using global::Products.Frontend.SharedComponents.Validation
+@using global::Products.PublicApi.Extensions;
+@using global::Products.Frontend.SharedComponents.Features.Antiforgery
+@using global::Products.Frontend.Core.Resources;
+
+@page "/products/item"
+@page "/products/item/{ProductIdParameter}"
+@attribute [StreamRendering]
+@inherits TimeWarpStateComponent
+
+@inject NavigationManager Navigation
+@inject IToastService Toast
+@inject IApizrManager<IProductsApi> ProductsApi
+@inject IValidator<ProductRequestDto> ProductRequestValidator
+
+<FlexibleFloatingCard FloatingIcon="@(new Icons.Color.Size24.DocumentEdit())">
+    <RegularSizeContent>
+        <FluentStack Class="px-3" Orientation="Orientation.Vertical">
+            <EditForm class="w-100" FormName="@ProductCreateUpdateFormName" Model="@CreateUpdateProduct" OnSubmit="@SubmitFormAsync">
+                <FormFluentValidationValidator @ref="_fluentValidationValidator" Validator="@ProductRequestValidator" />
+                <FluentStack Orientation="Orientation.Vertical" HorizontalAlignment="HorizontalAlignment.Stretch">
+                    <FluentSpacer />
+                    <FluentSpacer />
+                    <FluentTextField Name="name" Label="@TranslationResources.ProductNameFieldLabel" @bind-Value=@CreateUpdateProduct.Name Required />
+                    <FluentValidationMessage For=@(() => CreateUpdateProduct.Name) />
+                    <FluentSpacer />
+                    <FluentNumberField Name="price" Label="@TranslationResources.ProductPriceFieldLabel" @bind-Value=@CreateUpdateProduct.Price Required />
+                    <FluentValidationMessage For=@(() => CreateUpdateProduct.Price) />
+                    <FluentSpacer />
+                    <FluentTextField Name="description" Label="@TranslationResources.ProductDescriptionFieldLabel" @bind-Value=@CreateUpdateProduct.Description />
+                    <FluentValidationMessage For=@(() => CreateUpdateProduct.Description) />
+                    <FluentSpacer />
+                    <FluentSpacer />
+                    <FluentButton Class="align-self-end" Type="ButtonType.Submit"
+                        Appearance="Appearance.Accent">@TranslationResources.ProductSubmitButtonLabel
+                    </FluentButton>
+                </FluentStack>
+            </EditForm>
+        </FluentStack>
+    </RegularSizeContent>
+</FlexibleFloatingCard>
+
+@code
+{
+    private int _productId = 0;
+
+    [Parameter]
+    public string ProductIdParameter
+    {
+        get => _productId.ToString();
+        set
+        {
+            _productId = int.TryParse(value, out var id) ? id : 0;
+        }
+    }
+
+    public const string ProductCreateUpdateFormName = "ProductCreateUpdateForm";
+
+    private FormFluentValidationValidator? _fluentValidationValidator;
+    private readonly ProductRequestDto _emptyState = new() { Name = string.Empty, Price = 0m, Description = string.Empty };
+
+    [SupplyParameterFromForm(FormName = ProductCreateUpdateFormName)]
+    private ProductRequestDto? CreateUpdateProduct { get; set; }
+
+    public ProductsAddEditPage()
+    {
+        CreateUpdateProduct = _emptyState;
+    }
+
+    protected override void OnParametersSet()
+    {
+        CreateUpdateProduct ??= _emptyState;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        if (firstRender)
+        {
+            if (_productId > 0)
+            {
+                await LoadCurrentProductAsync(_productId);
+            }
+        }
+    }
+
+    private async Task LoadCurrentProductAsync(int id)
+    {
+        using var response = await ProductsApi.ExecuteAsync((opt, api) => api.GetProductById(id.ToString(), opt));
+        var data = response.ToData<ProductResponseDto>(out var errors);
+        if (data is not default(ProductResponseDto) && errors.Count == 0)
+        {
+            await InvokeAsync(() =>
+            {
+                CreateUpdateProduct = new ProductRequestDto
+                {
+                    Name = data.Name,
+                    Price = data.Price,
+                    Description = data.Description
+                };
+                StateHasChanged();
+            });
+        }
+        else
+        {
+            foreach (var error in errors)
+            {
+                Toast.ShowError(error);
+            }
+        }
+    }
+
+    private async Task SubmitFormAsync(EditContext editContext)
+    {
+        if (_fluentValidationValidator is default(SharedComponents.Validation.FormFluentValidationValidator))
+            return;
+
+		var success = await _fluentValidationValidator.ValidateAsync();
+        if (!success)
+            return;
+
+        var requestData = (ProductRequestDto)editContext.Model;
+        using var antiforgery = GetState<AntiforgeryState>();
+        
+        IApizrResponse<ApiResponse> response;
+        if (_productId > 0)
+        {
+            response = await ProductsApi.ExecuteAsync((opt, api) =>
+                api.UpdateProduct(_productId.ToString(), requestData, antiforgery.RequestVerificationToken, opt));
+        }
+        else
+        {
+            response = await ProductsApi.ExecuteAsync((opt, api) =>
+                api.CreateProduct(requestData, antiforgery.RequestVerificationToken, opt));
+        }
+        var data = response.ToData<ProductResponseDto>(out var errors);
+        if (data is not default(ProductResponseDto) && errors.Count == 0)
+        {
+            Navigation.NavigateTo("/products", forceLoad: true);
+        }
+        else
+        {
+            foreach (var error in errors)
+            {
+                Toast.ShowError(error);
+            }
+        }
+	}
+}

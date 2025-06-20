@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utilities\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Products.Universal\PublicApi\Products.PublicApi.csproj" />
     <ProjectReference Include="..\..\Products.Frontend.Infrastructure\Products.Frontend.Infrastructure.csproj" />
   </ItemGroup>

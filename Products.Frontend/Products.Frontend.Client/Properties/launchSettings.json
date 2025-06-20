@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "snowcoreBlog.Frontend.Client": {
+    "Products.Frontend.Client": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

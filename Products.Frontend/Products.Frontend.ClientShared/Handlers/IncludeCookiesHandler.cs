@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
-namespace snowcoreBlog.Frontend.ClientShared.Handlers;
+namespace Products.Frontend.ClientShared.Handlers;
 
 public class IncludeCookiesHandler : DelegatingHandler
 {

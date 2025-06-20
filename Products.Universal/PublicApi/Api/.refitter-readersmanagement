@@ -1,6 +1,6 @@
 {
-  "openApiPath": "https://localhost/api/readers/openapi/v1.json",
-  "namespace": "snowcoreBlog.PublicApi.Api",
+  "openApiPath": "https://localhost/api/products/openapi/v1.json",
+  "namespace": "Products.PublicApi.Api",
   "naming": {
     "useOpenApiTitle": true
   },
@@ -13,15 +13,11 @@
   "returnIApiResponse": true,
   "responseTypeOverride": {
     "GetAntiforgeryToken": "IApiResponse<ApiResponse>",
-    "GetAltchaChallenge": "IApiResponse<Ixnas.AltchaNet.AltchaChallenge>",
-	"Ping": "IApiResponse<string>",
-    "CheckNickNameNotTaken": "IApiResponse<ApiResponse>",
-	"RequestAuthData": "IApiResponse<ApiResponse>",
-    "ConfirmCreateByEmail": "IApiResponse<ApiResponse>",
-    "LoginByAssertion": "IApiResponse<ApiResponse>",
-    "RequestAssertionOptions": "IApiResponse<ApiResponse>",
-    "RequestAttestationOptions": "IApiResponse<ApiResponse>",
-    "RequestCreateByEmail": "IApiResponse<ApiResponse>"
+    "GetAllProducts": "IApiResponse<ApiResponse>",
+    "GetProductById": "IApiResponse<ApiResponse>",
+    "CreateProduct": "IApiResponse<ApiResponse>",
+    "UpdateProduct": "IApiResponse<ApiResponse>",
+    "DeleteProduct": "IApiResponse<ApiResponse>"
   },
   "generateOperationHeaders": true,
   "typeAccessibility": "Public",
@@ -34,8 +30,8 @@
   "outputFilename": "RefitInterface.cs",
   "generateMultipleFiles": true,
   "additionalNamespaces": [
-    "snowcoreBlog.PublicApi.Utilities.Api",
-    "snowcoreBlog.PublicApi.BusinessObjects.Dto"
+    "Products.PublicApi.Utilities.Api",
+    "Products.PublicApi.BusinessObjects.Dto"
   ],
   "trimUnusedSchema": true,
   "includeInheritanceHierarchy": false,
@@ -92,9 +88,6 @@
     "generateDefaultValues": true,
     "inlineNamedAny": false,
     "dateFormat": "yyyy-MM-dd",
-    "excludedTypeNames": [
-      "ExcludedTypeFoo",
-      "ExcludedTypeBar"
-    ]
+    "excludedTypeNames": []
   }
 }

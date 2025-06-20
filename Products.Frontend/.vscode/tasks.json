@@ -7,7 +7,7 @@
 			"type": "process",
 			"args": [
 				"build",
-				"${workspaceFolder}\\snowcoreBlog.Frontend.WasmForDebugging\\snowcoreBlog.Frontend.WasmForDebugging.csproj",
+				"${workspaceFolder}\\Products.Frontend.WasmForDebugging\\Products.Frontend.WasmForDebugging.csproj",
 				"/property:GenerateFullPaths=true",
 				"/consoleloggerparameters:NoSummary"
 			],
@@ -19,7 +19,7 @@
 			"type": "process",
 			"args": [
 				"publish",
-				"${workspaceFolder}\\snowcoreBlog.Frontend.WasmForDebugging\\snowcoreBlog.Frontend.WasmForDebugging.csproj",
+				"${workspaceFolder}\\Products.Frontend.WasmForDebugging\\Products.Frontend.WasmForDebugging.csproj",
 				"/property:GenerateFullPaths=true",
 				"/consoleloggerparameters:NoSummary"
 			],
@@ -32,7 +32,7 @@
 			"args": [
 				"watch",
 				"run",
-				"${workspaceFolder}\\snowcoreBlog.Frontend.WasmForDebugging\\snowcoreBlog.Frontend.WasmForDebugging.csproj",
+				"${workspaceFolder}\\Products.Frontend.WasmForDebugging\\Products.Frontend.WasmForDebugging.csproj",
 				"/property:GenerateFullPaths=true",
 				"/consoleloggerparameters:NoSummary"
 			],

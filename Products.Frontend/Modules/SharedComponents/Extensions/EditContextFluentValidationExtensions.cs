@@ -2,7 +2,7 @@
 using FluentValidation.Internal;
 using Microsoft.AspNetCore.Components.Forms;
 using Products.Frontend.SharedComponents.Utilities;
-using snowcoreBlog.Frontend.SharedComponents.Validation;
+using Products.Frontend.SharedComponents.Validation;
 
 namespace Products.Frontend.SharedComponents.Extensions;
 

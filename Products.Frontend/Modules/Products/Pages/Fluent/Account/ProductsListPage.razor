@@ -1,0 +1,123 @@
+﻿@using Apizr
+@using Icons = Microsoft.FluentUI.AspNetCore.Components.Icons
+@using Emojis = Microsoft.FluentUI.AspNetCore.Components.Emojis
+@using Microsoft.AspNetCore.Components.Forms
+@using global::Products.Frontend.SharedComponents.Features.Antiforgery
+@using global::Products.Frontend.Core.Resources;
+@using global::Products.PublicApi.Extensions
+
+@page "/products"
+@attribute [StreamRendering]
+@inherits TimeWarpStateComponent
+
+@inject NavigationManager Navigation
+@inject IToastService Toast
+@inject IDialogService Dialog
+@inject IApizrManager<IProductsApi> ProductsApi
+
+<FlexibleFloatingCard FloatingIcon="@(new Icons.Color.Size24.Table())">
+    <MobileSizeContent>
+        <FluentDataGrid Id="productsGrid"
+            ItemsProvider="_productProvider"
+            Virtualize="true"
+            DisplayMode="DataGridDisplayMode.Table"
+            TGridItem=ProductResponseDto>
+            <PropertyColumn Title="@nameof(ProductResponseDto.Id)" Property="@(c => c.Id)" Sortable="false" />
+            <PropertyColumn Title="@nameof(ProductResponseDto.Name)" Property="@(c => c.Name)" Sortable="false" />
+            <PropertyColumn Title="@nameof(ProductResponseDto.Price)" Property="@(c => c.Price)" Sortable="false" />
+            <PropertyColumn Title="@nameof(ProductResponseDto.Description)" Property="@(c => c.Description)" Sortable="false" />
+            <TemplateColumn Title="@string.Empty">
+                <FluentButton aria-label="Edit item" IconEnd="@(new Icons.Regular.Size16.Edit())" OnClick="() => { }" />
+                <FluentButton aria-label="Delete item" IconEnd="@(new Icons.Regular.Size16.Delete())" OnClick="() => AttemptDeleteProductAsync(context.Id)" />
+            </TemplateColumn>
+        </FluentDataGrid>
+    </MobileSizeContent>
+    <RegularSizeContent>
+        <FluentStack Class="px-3" Orientation="Orientation.Vertical">
+            <FluentDataGrid Id="productsGrid"
+                ItemsProvider="_productProvider"
+                Virtualize="true"
+                DisplayMode="DataGridDisplayMode.Table"
+                TGridItem=ProductResponseDto>
+                <PropertyColumn Title="@nameof(ProductResponseDto.Id)" Property="@(c => c.Id)" Sortable="false" />
+                <PropertyColumn Title="@nameof(ProductResponseDto.Name)" Property="@(c => c.Name)" Sortable="false" />
+                <PropertyColumn Title="@nameof(ProductResponseDto.Price)" Property="@(c => c.Price)" Sortable="false" />
+                <PropertyColumn Title="@nameof(ProductResponseDto.Description)" Property="@(c => c.Description)" Sortable="false" />
+                <TemplateColumn Title="@string.Empty">
+                    <FluentButton aria-label="Edit item" IconEnd="@(new Icons.Regular.Size16.Edit())" OnClick="() => NavigateCreateUpdateProductAsync(context.Id)" />
+                    <FluentButton aria-label="Delete item" IconEnd="@(new Icons.Regular.Size16.Delete())" OnClick="() => AttemptDeleteProductAsync(context.Id)" />
+                </TemplateColumn>
+            </FluentDataGrid>
+            <FluentButton aria-label="Add item" Class="align-self-end" Appearance="Appearance.Accent" IconEnd="@(new Icons.Regular.Size16.Add())" OnClick="() => NavigateCreateUpdateProductAsync()" />
+        </FluentStack>
+    </RegularSizeContent>
+</FlexibleFloatingCard>
+
+@code
+{
+    private GridItemsProvider<ProductResponseDto> _productProvider = default!;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        if (firstRender)
+        {
+            _productProvider = async req =>
+            {
+                using var response = await ProductsApi.ExecuteAsync((opt, api) => api.GetAllProducts(opt));
+                var data = response.ToData<List<ProductResponseDto>>(out var errors);
+                if (data is not default(List<ProductResponseDto>) && errors.Count == 0)
+                {
+                    return GridItemsProviderResult.From(
+                        items: data,
+                        totalItemCount: data.Count);
+                }
+                return GridItemsProviderResult.From(
+                    items: new List<ProductResponseDto>(),
+                    totalItemCount: 0);
+            };
+        }
+    }
+
+    private Task NavigateCreateUpdateProductAsync(int? id = null)
+    {
+        if (id is null)
+        {
+            Navigation.NavigateTo("/products/item");
+        }
+        else
+        {
+            Navigation.NavigateTo($"/products/item/{id}");
+        }
+        
+        return Task.CompletedTask;
+    }
+
+    private async Task AttemptDeleteProductAsync(int id)
+    {
+        var dialog = await Dialog.ShowConfirmationAsync(
+            TranslationResources.ProductDeleteConfirmationDescLabel,
+            title: TranslationResources.ProductDeleteConfirmationTitleLabel);
+        DialogResult? result = await dialog.Result;
+
+        if (!result.Cancelled)
+        {
+            using var antiforgery = GetState<AntiforgeryState>();
+            using var response = await ProductsApi.ExecuteAsync((opt, api) =>
+                api.DeleteProduct(id.ToString(), antiforgery.RequestVerificationToken, opt));
+            var data = response.ToData<ProductDeletedResponseDto>(out var errors);
+            if (data is not default(ProductDeletedResponseDto) && errors.Count == 0)
+            {
+                Navigation.NavigateTo("/products", forceLoad: true);
+            }
+            else
+            {
+                foreach (var error in errors)
+                {
+                    Toast.ShowError(error);
+                }
+            }
+        }
+    }
+}

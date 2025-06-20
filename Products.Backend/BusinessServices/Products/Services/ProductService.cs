@@ -58,7 +58,7 @@ public class ProductService : IProductService
             return ProductNotFoundError<ProductResponseDto>.Create(
                 string.Format(TranslationResources.ProductNotFoundErrorMessage, id));
         }
-        var productEntity = await _productRepository.AddOrUpdateAsync(existingProductEntity, id, token: token);
+        var productEntity = await _productRepository.AddOrUpdateAsync(request.ToEntity(), id, token: token);
         if (productEntity is default(ProductEntity))
         {
             return UnableToUpdateProductError<ProductResponseDto>.Create(
