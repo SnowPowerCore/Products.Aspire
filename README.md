@@ -15,6 +15,7 @@ It contains following components:
 - FastEndpoints
 - Dapper + Dapper.FastCrud
 - Mapperly for source generated mapping of DTOs/models/db entities (domain objects)
+- Custom SerializationContext
 - Apizr + Refit
 - .json Resource Files source generator
 - validation
