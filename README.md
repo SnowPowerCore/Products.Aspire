@@ -19,7 +19,7 @@ It contains following components:
 - Apizr + Refit
 - .json Resource Files source generator
 - validation
-- YARP integration
+- YARP - .NET Aspire integration
 - API integration tests with TestContainers Postgresql container
 - Scalar (Swagger replacement)
 
