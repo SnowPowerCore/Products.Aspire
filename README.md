@@ -19,7 +19,7 @@ It contains following components:
 - .json Resource Files source generator
 - validation
 - YARP integration
-- API integration tests
+- API integration tests with TestContainers Postgresql container
 - Scalar (Swagger replacement)
 
 ## Prerequisites
