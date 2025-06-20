@@ -12,7 +12,7 @@ It contains following components:
 ## Prerequisites
 You need latest .NET 9 SDK, which can be either managed by Visual Studio IDE (or Rider), or installed manually from https://dot.net.
 
-You need Docker or Podman (was tested on Podman) to run this project.
+You need Docker or Podman (was tested on Podman) to see the value of this project.
 
 You may need to install dev certificate to be able to work with https. Use the ```dotnet dev-certs https --trust``` command.
 
