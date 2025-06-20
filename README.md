@@ -10,7 +10,7 @@ It contains following components:
 - Products.Backend.IntegrationTests: Integration tests project to test endpoints of Products.Backend.Api.
 
 ## Prerequisites
-You need latest .NET 9 SDK, which can be either managed by Visual Studio IDE (or Rider), or installed manually from https://dot.net.
+You need the latest .NET 9 SDK, which can be either managed by Visual Studio IDE (or Rider), or installed manually from https://dot.net.
 
 You need Docker or Podman (was tested on Podman) to see the value of this project.
 
