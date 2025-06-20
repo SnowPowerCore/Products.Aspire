@@ -9,7 +9,7 @@ It contains following components:
 - Products.Backend.AspireYarpGateway: YARP integration with .NET Aspire for reverse proxy.
 - Products.Backend.IntegrationTests: Integration tests project to test endpoints of Products.Backend.Api.
 
-You need Docker or Podman (was tested on Podman) to run this project. This project was tested on Windows Machine.
+You need Docker or Podman (was tested on Podman) to run this project. This project was tested on Windows Machine. For Windows Machine you would need to have the Ubuntu WSL installed (can be done through Microsoft Store).
 You can execute tests by running the following command (it's assumed you 'cd' into the project root dir)
 ```dotnet test .\Products.Backend.IntegrationTests\Products.Backend.IntegrationTests.csproj```.
 
