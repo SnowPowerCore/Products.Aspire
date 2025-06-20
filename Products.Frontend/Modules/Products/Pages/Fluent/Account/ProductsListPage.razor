@@ -84,11 +84,11 @@
     {
         if (id is null)
         {
-            Navigation.NavigateTo("/products/item");
+            Navigation.NavigateTo("/app/products/item");
         }
         else
         {
-            Navigation.NavigateTo($"/products/item/{id}");
+            Navigation.NavigateTo($"/app/products/item/{id}");
         }
         
         return Task.CompletedTask;
@@ -109,7 +109,7 @@
             var data = response.ToData<ProductDeletedResponseDto>(out var errors);
             if (data is not default(ProductDeletedResponseDto) && errors.Count == 0)
             {
-                Navigation.NavigateTo("/products", forceLoad: true);
+                Navigation.NavigateTo("/app/products", forceLoad: true);
             }
             else
             {

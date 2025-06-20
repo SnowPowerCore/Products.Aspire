@@ -142,7 +142,7 @@
         var data = response.ToData<ProductResponseDto>(out var errors);
         if (data is not default(ProductResponseDto) && errors.Count == 0)
         {
-            Navigation.NavigateTo("/products", forceLoad: true);
+            Navigation.NavigateTo("/app/products", forceLoad: true);
         }
         else
         {
