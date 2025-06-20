@@ -13,6 +13,7 @@ This project was tested on Windows Machine. For Windows Machine you would need t
 This project was tested on Windows 11 24H2, using Microsoft Edge (Chromium).
 
 You need Docker or Podman (was tested on Podman) to run this project.
+You may need to install dev certificate to be able to work with https. Use the ```dotnet dev-certs https --trust``` command.
 You can execute tests by running the following command (it's assumed you 'cd' into the project root dir)
 
 ```dotnet test .\Products.Backend.IntegrationTests\Products.Backend.IntegrationTests.csproj```.
