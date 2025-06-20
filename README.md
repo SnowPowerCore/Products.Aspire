@@ -23,6 +23,7 @@ It contains following components:
 - API integration tests with TestContainers Postgresql container
 - Scalar (Swagger replacement)
 - Blazor Web App (Interactive Auto rendering mode)
+- Redux-like state management using TimeWarp.State
 - Modular frontend
 
 ## Prerequisites
