@@ -16,7 +16,7 @@ You can execute tests by running the following command (it's assumed you 'cd' in
 
 (make sure you **don't** run .NET Aspire project at the same moment as tests)
 
-Run the .NET Aspire project and use following urls to access different parts of this system:
+Run the .NET Aspire project (you can do the "Debug -> Start New Instance") and use following urls to access different parts of this system:
 - https://localhost/api/products/scalar/v1  Api definition provided by Scalar (recent alternative for Swagger)
 - https://localhost/api/products/v1  Just a regular endpoint to see your current list of products (following the requirements doc) (you can access other GET endpoints right from the address panel)
 - https://localhost/app/products  Blazor Web App to view/manipulate the data from the UI
