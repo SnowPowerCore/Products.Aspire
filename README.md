@@ -9,6 +9,13 @@ It contains following components:
 - Products.Backend.AspireYarpGateway: YARP integration with .NET Aspire for reverse proxy.
 - Products.Backend.IntegrationTests: Integration tests project to test endpoints of Products.Backend.Api.
 
+## Prerequisites
+You need latest .NET 9 SDK, which can be either managed by Visual Studio IDE (or Rider), or installed manually from https://dot.net.
+
+You need Docker or Podman (was tested on Podman) to run this project.
+
+You may need to install dev certificate to be able to work with https. Use the ```dotnet dev-certs https --trust``` command.
+
 ## How to run and links
 Run the .NET Aspire project (you can do the "Debug -> Start New Instance") and use following urls to access different parts of this system:
 - https://localhost/api/products/scalar/v1  Api definition provided by Scalar (recent alternative for Swagger)
@@ -19,11 +26,6 @@ Run the .NET Aspire project (you can do the "Debug -> Start New Instance") and u
 This project was tested on Windows Machine. For Windows Machine you would need to have the Ubuntu WSL installed (can be done through Microsoft Store).
 
 This project was tested on Windows 11 24H2, using Microsoft Edge (Chromium).
-
-## Prerequisites
-You need Docker or Podman (was tested on Podman) to run this project.
-
-You may need to install dev certificate to be able to work with https. Use the ```dotnet dev-certs https --trust``` command.
 
 ## Integration tests
 You can execute tests by running the following command (it's assumed you 'cd' into the project root dir)
