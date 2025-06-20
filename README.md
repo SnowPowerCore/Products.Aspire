@@ -18,6 +18,7 @@ You may need to install dev certificate to be able to work with https. Use the `
 
 ## How to run and links
 Run the .NET Aspire project (you can do the "Debug -> Start New Instance") and use following urls to access different parts of this system:
+- https://localhost:17150  .NET Aspire Dashboard
 - https://localhost/api/products/scalar/v1  Api definition provided by Scalar (recent alternative for Swagger)
 - https://localhost/api/products/v1  Just a regular endpoint to see your current list of products (following the requirements doc) (you can access other GET endpoints right from the address panel)
 - https://localhost/app/products  Blazor Web App to view/manipulate the data from the UI
