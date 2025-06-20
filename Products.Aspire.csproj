@@ -35,6 +35,7 @@
 
   <PropertyGroup>
     <DefaultItemExcludes>$(DefaultItemExcludes);Products.Backend\**</DefaultItemExcludes>
+    <DefaultItemExcludes>$(DefaultItemExcludes);Products.Backend.IntegrationTests\**</DefaultItemExcludes>
     <DefaultItemExcludes>$(DefaultItemExcludes);Products.Frontend\**</DefaultItemExcludes>
     <DefaultItemExcludes>$(DefaultItemExcludes);Products.Universal\**</DefaultItemExcludes>
   </PropertyGroup>

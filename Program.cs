@@ -11,8 +11,8 @@ var backendProductsProject = builder.AddProject<Projects.Products_Backend_Api>("
     .WithReference(dbProductEntitiesDb)
     .WaitFor(dbProductEntitiesDb);
 
-// builder.AddProject<Projects.Products_Frontend_Host>("frontend-apphost")
-//     .WaitFor(backendProductsProject);
+builder.AddProject<Projects.Products_Frontend_Host>("frontend-apphost")
+    .WaitFor(backendProductsProject);
 
 builder.AddYarp("ingress")
     .WithReference(backendProductsProject)
