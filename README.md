@@ -11,7 +11,7 @@ It contains following components:
 
 You need Docker or Podman (was tested on Podman) to run this project. This project was tested on Windows Machine.
 You can execute tests by running the following command (it's assumed you 'cd' into the project root dir)
-```dotnet test .\Products.Aspire\Products.Backend.IntegrationTests\Products.Backend.IntegrationTests.csproj```.
+```dotnet test .\Products.Backend.IntegrationTests\Products.Backend.IntegrationTests.csproj```.
 
 Run the .NET Aspire project and use following urls to access different parts of this system:
 - https://localhost/api/products/scalar/v1  Api definition provided by Scalar (recent alternative for Swagger)
