@@ -10,9 +10,11 @@ It contains following components:
 - Products.Backend.IntegrationTests: Integration tests project to test endpoints of Products.Backend.Api.
 
 ## Features
+- .NET 9
 - .NET Aspire
 - FastEndpoints
 - Dapper + Dapper.FastCrud
+- Mapperly for source generated mapping of DTOs/models/db entities (domain objects)
 - Apizr + Refit
 - .json Resource Files source generator
 - validation
