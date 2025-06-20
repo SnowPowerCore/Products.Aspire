@@ -1,0 +1,5 @@
+{
+    "ProductNotFoundErrorMessage": "Продукт с ID '{0}' не найден.",
+    "UnableToCreateProductErrorMessage": "Произошла ошибка при попытке создать продукт.",
+    "UnableToUpdateProductErrorMessage": "Произошла ошибка при попытке обновить продукт с ID '{0}'."
+}

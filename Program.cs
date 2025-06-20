@@ -1,0 +1,26 @@
+var builder = DistributedApplication.CreateBuilder(args);
+
+var postgres = builder
+    .AddPostgres("postgres")
+    .WithDataVolume(isReadOnly: false)
+    .WithPgWeb();
+
+var dbProductEntitiesDb = postgres.AddDatabase("db-product-entities");
+
+var backendProductsProject = builder.AddProject<Projects.Products_Backend_Api>("backend-products")
+    .WithReference(dbProductEntitiesDb)
+    .WaitFor(dbProductEntitiesDb);
+
+// builder.AddProject<Projects.snowcoreBlog_Frontend_Host>("frontend-apphost")
+//     .WaitFor(backendAuthorsManagementProject)
+//     .WaitFor(backendReadersManagementProject)
+//     .WaitFor(backendArticlesProject)
+//     .WithReference(cache)
+//     .WaitFor(cache);
+
+builder.AddYarp("ingress")
+    .WithReference(backendProductsProject)
+    .LoadFromConfiguration("ReverseProxy")
+    .WithHttpsEndpoint(targetPort: 443);
+
+await builder.Build().RunAsync();
