@@ -33,6 +33,8 @@ You need Docker or Podman (was tested on Podman) to be able to run this project 
 
 You may need to install dev certificate to be able to work with https. Use the ```dotnet dev-certs https --trust``` command.
 
+If Nuget restore process fails, you might also need to install some workloads. Use ```dotnet workload restore``` to install necessary ones for the project.
+
 ## How to run and links
 Run the .NET Aspire project (you can do the "Debug -> Start New Instance") and use following urls to access different parts of this system:
 - https://localhost:17150  .NET Aspire Dashboard
