@@ -1,6 +1,4 @@
 using System.Net;
-using BitzArt.Blazor.Auth.Server;
-using Ixnas.AltchaNet;
 using Products.Frontend.ClientShared.Extensions;
 using Products.Frontend.Host.Components;
 using Products.PublicApi.Api;
@@ -20,7 +18,6 @@ builder.Services.AddRazorComponents()
 var container = new CookieContainer();
 builder.Services.AddSingleton(container);
 
-builder.Services.AddSingleton(static sp => Altcha.CreateSolverBuilder().Build());
 builder.Services.AddClient();
 builder.Services.ConfigureProductsBackendApiApizrManagers(options =>
 	options.WithHttpClientHandler(sp => new()
@@ -52,7 +49,5 @@ app.MapRazorComponents<App>()
 		typeof(Products.Frontend.Client.Program).Assembly,
 		typeof(Products.Frontend.ProductsApi.Extensions.ServiceCollectionExtensions).Assembly,
 		typeof(Products.Frontend.SharedComponents.Extensions.ServiceCollectionExtensions).Assembly);
-
-app.MapAuthEndpoints();
 
 await app.RunAsync();

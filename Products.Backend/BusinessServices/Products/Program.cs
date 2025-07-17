@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Routing.Constraints;
 using MinimalStepifiedSystem.Core.Extensions;
 using Npgsql;
 using NSwag;
-using Oakton;
 using Products.Backend.Api.Interfaces.Repositories.Dapper;
 using Products.Backend.Api.Interfaces.Services;
 using Products.Backend.Api.Repositories.Dapper;
